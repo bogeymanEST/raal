@@ -15,7 +15,7 @@
   margin: 10% auto auto;
   padding: 20px; }
 
-.main-btn {
+.main-btn, .top-btn {
   width: 154px;
   padding: 12px 10px;
   border-radius: 2px;
@@ -26,10 +26,15 @@
   color: black;
   line-height: 25px;
   text-align: center; }
-  .main-btn:hover {
+  .main-btn:hover, .top-btn:hover {
     color: #0d0d0d;
     cursor: pointer;
     background-color: #33c96d; }
+
+.top-btn {
+  width: 100%;
+  padding: 5px 10px;
+  margin-bottom: 10px; }
 
 .video-container {
   margin: 20px auto auto;
@@ -146,8 +151,11 @@ pre {
   background-color: rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); }
 
-#page-laaban, #page-tasks, #page-ehin {
+#page-laaban, #page-tasks, #page-ehin, #page-comparison {
   overflow-y: auto; }
+
+#page-comparison {
+  background-color: #23b0c2; }
 
 #page-laaban {
   background-color: #cb5d0a; }

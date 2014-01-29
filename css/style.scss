@@ -13,6 +13,7 @@ $author-box-w: 1000px; //Width of author description box
 $laaban-bg: #cb5d0a;
 $tasks-bg: #29a113;
 $ehin-bg: #8b199f;
+$comparison-bg: #23b0c2;
 $poem-height: 450px;
 $poem-width: 49%;
 $poem-width: 49%;
@@ -48,6 +49,13 @@ $poem-width: 49%;
     cursor: pointer;
     background-color: lighten($main-btn-bg-color, 5%);
   }
+}
+
+.top-btn {
+  @extend .main-btn;
+  width: 100%;
+  padding: 5px 10px;
+  margin-bottom: 10px;
 }
 .video-container {
   margin: 20px auto auto;
@@ -192,10 +200,13 @@ pre {
   background-color: rgba(0, 0, 0, 0.2);
   @include inset-shadow;
 }
-#page-laaban, #page-tasks, #page-ehin {
+#page-laaban, #page-tasks, #page-ehin, #page-comparison {
   overflow-y: auto;
 }
 // Pages
+#page-comparison {
+  background-color: $comparison-bg;
+}
 #page-laaban {
   background-color: $laaban-bg;
 }

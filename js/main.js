@@ -7,6 +7,7 @@ const STATE_MAIN = "main";
 const STATE_LEFT = "ehin";
 const STATE_RIGHT = "laaban";
 const STATE_BOT = "tasks";
+const STATE_TOP = "comparison";
 
 var animEndEventNames = {
     'WebkitAnimation': 'webkitAnimationEnd',
@@ -97,6 +98,9 @@ function checkState() {
             break;
         case STATE_BOT: //We are going to the bottom page
             changePage(ANIM_FROM_BOTTOM, $("#page-tasks"));
+            break;
+        case STATE_TOP:
+            changePage(ANIM_FROM_TOP, $("#page-comparison"));
             break;
         default:
             if (lastState == null) return; //We just opened the page, no need to change to the main page

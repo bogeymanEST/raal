@@ -3,23 +3,22 @@ poems: #The poem with the largest ID
   ehin: 6
 questions:
   - Mis on neil luuletustel ühist?
+  - Mille poolest need luuletused erinevad?
   - Millest need luuletused räägivad?
-  - Mis on selle küsimuse vastus?
-  - Mis on elu mõte?
-  - Miks?
-  - Kuidas?
-  - Kes?
+  - Võrdle luuletuste keelekasutust.
+  - Kirjelda luuletuste ülesehitust.
+  - Mida tahavad autorid nende luuletustega öelda?
 premade:
   - pair:
       laaban: 0 #0-based index
       ehin: 1
     questions:
-      - Premade 1 q1
-      - Premade 1 q2
+      - 1.1
+      - 1.2
   - pair:
       laaban: 0
       ehin: 0
     questions:
-      - Premade 2 q1
-      - Premade 2 q2
-      - Premade 2 q3
+      - 2.1
+      - 2.2
+      - 2.3
