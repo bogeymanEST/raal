@@ -3034,7 +3034,7 @@ if(typeof VMM != 'undefined' && typeof VMM.ExternalAPI == 'undefined') {
 						twit += td;
 						twit += "</p>";
 						
-						twit += "— " + d.user.name + " (<a href='https://twitter.com/" + d.user.screen_name + "'>@" + d.user.screen_name + "</a>) <a href='https://twitter.com/" + d.user.screen_name + "/status/" + d.id + "'>" + VMM.ExternalAPI.twitter.prettyParseTwitterDate(d.created_at) + " </a></blockquote></div>";
+						twit += "- " + d.user.name + " (<a href='https://twitter.com/" + d.user.screen_name + "'>@" + d.user.screen_name + "</a>) <a href='https://twitter.com/" + d.user.screen_name + "/status/" + d.id + "'>" + VMM.ExternalAPI.twitter.prettyParseTwitterDate(d.created_at) + " </a></blockquote></div>";
 						
 						tweet.content = twit;
 						tweet.raw = d;
@@ -3076,7 +3076,7 @@ if(typeof VMM != 'undefined' && typeof VMM.ExternalAPI == 'undefined') {
 						var td = VMM.Util.linkify_with_twitter(d.results[i].text, "_blank");
 						twit += td;
 						twit += "</p>";
-						twit += "— " + d.results[i].from_user_name + " (<a href='https://twitter.com/" + d.results[i].from_user + "'>@" + d.results[i].from_user + "</a>) <a href='https://twitter.com/" + d.results[i].from_user + "/status/" + d.id + "'>" + VMM.ExternalAPI.twitter.prettyParseTwitterDate(d.results[i].created_at) + " </a></blockquote></div>";
+						twit += "- " + d.results[i].from_user_name + " (<a href='https://twitter.com/" + d.results[i].from_user + "'>@" + d.results[i].from_user + "</a>) <a href='https://twitter.com/" + d.results[i].from_user + "/status/" + d.id + "'>" + VMM.ExternalAPI.twitter.prettyParseTwitterDate(d.results[i].created_at) + " </a></blockquote></div>";
 						tweet.content = twit;
 						tweet.raw = d.results[i];
 						tweetArray.push(tweet);
