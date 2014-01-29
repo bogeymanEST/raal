@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TimelineJS Embed</title>
+    <meta charset="utf-8">
+    <meta name="description" content="TimelineJS Embed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <!-- Style-->
+    <style>
+      html, body {
+      height:100%;
+      padding: 0px;
+      margin: 0px;
+      }
+
+      #timeline-embed { height: 100%; }
+    </style>
+    <!-- HTML5 shim, for IE6-8 support of HTML elements--><!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  </head>
+</html>
+<body>
+  <!-- BEGIN Timeline Embed -->
+  <div id="timeline-embed"></div>
+  <!-- Override -->
+  <script type="text/javascript">
+      var timeline_config = {
+          width:              '100%',
+          height:             '700',
+          source:             'https://docs.google.com/spreadsheet/pub?key=0ArrfYkzWnp-DdG1LNUdQbEtRaWpVeUE2a0tIaG5lc0E&output=html',
+          embed_id:           'timeline-embed',               //OPTIONAL USE A DIFFERENT DIV ID FOR EMBED
+          start_zoom_adjust:  '1',
+          font:               'Bevan-PotanoSans',             //OPTIONAL FONT
+          lang:               'et',                           //OPTIONAL LANGUAGE
+          css:                '../css/timeline.css',     //OPTIONAL PATH TO CSS
+          js:                 '../js/timeline-min.js'    //OPTIONAL PATH TO JS
+      }
+  </script>
+  <script type="text/javascript" src="../js/storyjs-embed.js"></script>
+  <!-- END Timeline Embed-->
+</body>

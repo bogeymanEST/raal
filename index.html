@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--suppress HtmlUnknownAnchorTarget -->
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Sürrealism Eesti luules</title>
+    <link rel="stylesheet" type="text/css" href="css/default.css"/>
+    <link rel="stylesheet" type="text/css" href="css/component.css"/>
+    <link rel="stylesheet" type="text/css" href="css/animations.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <script src="js/modernizr.custom.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+<body>
+<div id="pt-main" class="pt-perspective">
+    <div id="page-main" class="pt-page pt-page-current">
+        <div id="main-btn-container">
+            <a class="main-btn" id="main-btn-left" href="#ehin">
+                <img src="img/btn-ehin.jpg"/>
+                ◀Andres Ehin◀
+            </a>
+            <a class="main-btn" id="main-btn-mid" href="#tasks">
+                <img src="img/btn-syr.jpg"/>
+                ▼Ülesanded▼
+            </a>
+            <a class="main-btn" id="main-btn-right" href="#laaban">
+                <img src="img/btn-laaban.jpg"/>
+                ▶Ilmar Laaban▶
+            </a>
+            <br>
+            <div class="quote-generator-container">
+                <div class="quote"></div>
+                <div class="author"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- slides in from left -->
+    <div id="page-ehin" class="pt-page">
+        <div class="info-box">
+            <div class="info-content">
+                <div class="info-header">Andres Ehin 1940 - 2011</div>
+                <iframe name="laabanframe" src='embed/ehin.html' width='100%' height='700' frameborder='0'></iframe>
+                <a class="btn-back" href="#main">Tagasi</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- slides in from bottom -->
+    <div id="page-tasks" class="pt-page">
+        <div class="tasks-container">
+            <div class="tasks-content">
+                <div class="tasks-header">Loe ja vasta küsimustele</div>
+                <div id="poem-left">
+                    <div class="poem-header">Andres Ehin</div>
+                    <pre class="poem-content">
+                        Laadin...
+                    </pre>
+                </div>
+                <div id="poem-right">
+                    <div class="poem-header">Ilmar Laaban</div>
+                    <pre class="poem-content">
+                        Laadin...
+                    </pre>
+                </div>
+                <div class="poem-spacer"></div>
+                <div class="poem-question-container">
+                </div>
+                <!--<div class="poem-send-container">
+                    <div class="poem-send-header">Saada vastused õpetajale.</div>
+                    E-posti aadress<input type="text" id="poem-send-email"/><br/>
+                    <input type="button" id="poem-send-button" value="Saada"/>
+                </div>-->
+                <a class="btn-back" href="#main">Tagasi</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- slides in from right -->
+    <div id="page-laaban" class="pt-page">
+        <div class="info-box">
+            <div class="info-content">
+                <div class="info-header">Ilmar Laaban 1921 - 2000</div>
+                <iframe name="laabanframe" src='embed/laaban.html' width='100%' height='700' frameborder='0'></iframe>
+                <a class="btn-back" href="#main">Tagasi</a>
+            </div>
+        </div>
+        <div class="video-container">
+            <iframe width="640" height="360" src="//www.youtube.com/embed/MzbHct-A_-M?rel=0" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+
+</div>
+<script src="js/js-yaml.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="js/history.js/jquery.history.js"></script>
+<script src="js/jquery.hashchange.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
