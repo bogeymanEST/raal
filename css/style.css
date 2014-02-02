@@ -43,12 +43,35 @@
 
 .info-box, .tasks-container {
   width: 1000px;
-  min-height: 700px;
-  height: 85%;
+  min-height: 770px;
+  height: 95%;
   margin: 20px auto auto;
+  margin-bottom: 20px;
   border-radius: 2px;
   padding: 15px;
   overflow-y: auto; }
+
+.tooltip {
+  border-bottom: dashed white 1px;
+  color: #ffbfa2;
+  text-decoration: none;
+  font-weight: bold; }
+  .tooltip:hover {
+    cursor: default;
+    color: #ffe1d5; }
+  .tooltip + .text {
+    display: none; }
+
+.poem-task-spacer {
+  height: 35px; }
+
+.gallery-link {
+  color: #aaa;
+  font-weight: bold;
+  text-shadow: 0px 0px 2px black; }
+  .gallery-link:hover {
+    cursor: pointer;
+    color: #fff; }
 
 .info-header, .tasks-header {
   font-family: 'Alegreya Sans';
@@ -56,7 +79,8 @@
   font-size: 50pt;
   border-bottom: rgba(0, 0, 0, 0.2) solid 1px;
   line-height: 55pt;
-  text-shadow: 0px 0px 5px black; }
+  text-align: center;
+  text-shadow: 0px 0px 2px black; }
 
 .info-section {
   font-family: 'Alegreya Sans';
@@ -64,7 +88,7 @@
   font-weight: 700;
   margin-top: 10px;
   margin-bottom: 5px;
-  text-shadow: 0px 0px 5px black; }
+  text-shadow: 0px 0px 2px black; }
 
 .tasks-container {
   width: 900px;
@@ -73,7 +97,7 @@
 .tasks-header {
   border-bottom: none; }
 
-#poem-left, #poem-right {
+#poem-left-1, #poem-right-1, #poem-left-2, #poem-right-2 {
   background-color: rgba(0, 0, 0, 0.1);
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
   width: 49%;
@@ -81,10 +105,10 @@
   padding: 10px;
   overflow: auto; }
 
-#poem-left {
+#poem-left-1, #poem-left-2 {
   float: left; }
 
-#poem-right {
+#poem-right-1, #poem-right-2 {
   float: right; }
 
 .poem-spacer {
@@ -111,7 +135,7 @@
   padding: 5px;
   width: 100%;
   text-align: center;
-  text-shadow: 0px 0px 5px black; }
+  text-shadow: 0px 0px 2px black; }
   .quote-generator-container:hover {
     background-color: rgba(255, 255, 255, 0.05);
     cursor: pointer; }
@@ -143,6 +167,21 @@ input[type=button] {
     background-color: rgba(0, 0, 0, 0.1);
     cursor: pointer; }
 
+.poembox {
+  width: 45%;
+  margin: 5x;
+  padding: 5px; }
+
+.poembox-header {
+  width: 100%;
+  height: 20px; }
+
+.pull-left {
+  float: left; }
+
+.pull-right {
+  float: right; }
+
 pre {
   font-family: 'Lato', Calibri, Arial, sans-serif;
   margin: none; }
@@ -151,20 +190,29 @@ pre {
   background-color: rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); }
 
-#page-laaban, #page-tasks, #page-ehin, #page-comparison {
+#page-laaban, #page-tasks, #page-ehin, #page-comparison, #page-laaban-gallery, #page-ehin-gallery, #page-comparison-poetry {
   overflow-y: auto; }
+
+#page-comparison-poetry {
+  background-color: #458e93; }
 
 #page-comparison {
   background-color: #23b0c2; }
 
 #page-laaban {
-  background-color: #cb5d0a; }
+  background-color: #d9912e; }
 
 #page-tasks {
-  background-color: #29a113; }
+  background-color: #579c64; }
 
 #page-ehin {
-  background-color: #8b199f; }
+  background-color: #3876a8; }
+
+#page-laaban-gallery {
+  background-color: #a6643c; }
+
+#page-ehin-gallery {
+  background-color: #2b587e; }
 
 .pt-page, #pt-main {
   background-color: black; }
@@ -172,7 +220,7 @@ pre {
 .btn-back {
   font-size: 20pt;
   font-weight: bold;
-  color: #fff;
+  color: #ffffff;
   opacity: 0.7; }
   .btn-back:hover {
     cursor: pointer;

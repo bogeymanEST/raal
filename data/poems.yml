@@ -1,24 +1,33 @@
 poems: #The poem with the largest ID
-  laaban: 6
-  ehin: 6
+  laaban: 11
+  ehin: 10
 questions:
   - Mis on neil luuletustel ühist?
-  - Mille poolest need luuletused erinevad?
+  - Mille poolest need luuletused erinevad üksteisest?
   - Millest need luuletused räägivad?
   - Võrdle luuletuste keelekasutust.
   - Kirjelda luuletuste ülesehitust.
   - Mida tahavad autorid nende luuletustega öelda?
+  - Too tekstidest välja näiteid, kus väljendub sürrealistlik lähenemine.
 premade:
   - pair:
-      laaban: 0 #0-based index
-      ehin: 1
+      laaban: 6 #0-based index
+      ehin: 6
     questions:
-      - 1.1
-      - 1.2
+      - Mis on oksüümoron? Kumb autoritest seda kasutab luuletuses? Too näide
+      - Miks on need luuletused sürrealistlikud?
+      - Mida tahavad autorid oma luuletustega öelda?
   - pair:
-      laaban: 0
+      laaban: 5
       ehin: 0
     questions:
-      - 2.1
-      - 2.2
-      - 2.3
+      - Võrdle neid luuletusi.
+      - Kuidas mõjub lugejale sõnakordus Ehini luuletuses?
+      - Vali Laabani luuletusest üks asi, milleks ta end kutsub, ning selgita mida see võiks tähendada.
+  - pair:
+      laaban: 10
+      ehin: 9
+    questions:
+      - Milline seos on luuletustel Einsteiniga? Kuidas autorid Einsteini motiivi kasutavad?
+      - Mis võiks olla Laabani luuletuse viimase värsi tähendus?
+      - Miks kasutab Ehin mõttekordust? Kuidas see mõjub?

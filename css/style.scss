@@ -3,17 +3,26 @@
   Author: Rasmus Saks
 */
 
-$main-btn-bg-color: #2eb562; //Main page button background color
-$main-btn-txt-color: #000; //Main page button text color
-$btn-container-w: 510px; //Main page button container width
-$page-bg-color: #24716f; //Main page background color
+$main-btn-bg-color: #2eb562;
+//Main page button background color
+$main-btn-txt-color: #000;
+//Main page button text color
+$btn-container-w: 510px;
+//Main page button container width
+$page-bg-color: #24716f;
+//Main page background color
 
-$author-box-w: 1000px; //Width of author description box
+$author-box-w: 1000px;
+//Width of author description box
 
-$laaban-bg: #cb5d0a;
-$tasks-bg: #29a113;
-$ehin-bg: #8b199f;
+$laaban-bg: #D9912E;
+$laaban-gallery-bg: #a6643c;
+//$tasks-bg: #29a113;
+$tasks-bg: #579C64;
+$ehin-bg: #3876A8;
+$ehin-gallery-bg: #2b587e;
 $comparison-bg: #23b0c2;
+$comparison-poetry-bg: #458e93;
 $poem-height: 450px;
 $poem-width: 49%;
 $poem-width: 49%;
@@ -57,29 +66,63 @@ $poem-width: 49%;
   padding: 5px 10px;
   margin-bottom: 10px;
 }
+
 .video-container {
   margin: 20px auto auto;
   width: 640px;
   height: 360px;
 }
+
 .info-box {
   width: $author-box-w;
-  min-height: 700px;
-  height: 85%;
+  min-height: 770px;
+  height: 95%;
   margin: 20px auto auto;
+  margin-bottom: 20px;
   border-radius: 2px;
   padding: 15px;
-  overflow-y:auto;
+  overflow-y: auto;
 }
-@mixin text-shadow {
-  text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
+
+@mixin text-shadow($color: rgba(0, 0, 0, 1)) {
+  text-shadow: 0px 0px 2px $color;
 }
+
+.tooltip {
+  border-bottom: dashed white 1px;
+  color: rgb(255, 191, 162);
+  text-decoration: none;
+  font-weight: bold;
+  &:hover {
+    cursor: default;
+    color: rgb(255, 225, 213);
+  }
+  + .text {
+    display: none;
+  }
+}
+
+.poem-task-spacer {
+  height: 35px;
+}
+
+.gallery-link {
+  color: #aaa;
+  font-weight: bold;
+  @include text-shadow;
+  &:hover {
+    cursor: pointer;
+    color: #fff;
+  }
+}
+
 .info-header {
   font-family: 'Alegreya Sans';
   font-weight: bolder;
   font-size: 50pt;
   border-bottom: rgba(0, 0, 0, 0.2) solid 1px;
   line-height: 55pt;
+  text-align: center;
   @include text-shadow;
 }
 
@@ -99,7 +142,7 @@ $poem-width: 49%;
 }
 
 .tasks-content {
-  @extend .info-content !optional;
+  @extend .info-content ! optional;
 }
 
 .tasks-header {
@@ -111,7 +154,7 @@ $poem-width: 49%;
   box-shadow: inset 0 0 $size rgba(0, 0, 0, 0.5);
 }
 
-#poem-left, #poem-right {
+#poem-left-1, #poem-right-1, #poem-left-2, #poem-right-2 {
   background-color: rgba(0, 0, 0, 0.1);
   @include inset-shadow;
   width: $poem-width;
@@ -120,22 +163,26 @@ $poem-width: 49%;
   overflow: auto;
 
 }
-#poem-left {
+
+#poem-left-1, #poem-left-2 {
   float: left;
 }
 
-#poem-right {
+#poem-right-1, #poem-right-2 {
   float: right;
 }
+
 .poem-spacer {
   height: $poem-height;
   width: 100%;
 }
+
 .poem-header {
   font-weight: 900;
   font-size: 15pt;
   border-bottom: rgba(0, 0, 0, 0.2) solid 1px;
 }
+
 .poem-send-container {
   margin-top: 20px;
 }
@@ -192,21 +239,50 @@ input[type=button] {
     cursor: pointer;
   }
 }
+
+.poembox {
+  width: 45%;
+  margin: 5x;
+  padding: 5px;
+}
+
+.poembox-header {
+  width: 100%;
+  height: 20px;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
 pre {
   font-family: 'Lato', Calibri, Arial, sans-serif;
   margin: none;
 }
+
 .info-box {
   background-color: rgba(0, 0, 0, 0.2);
   @include inset-shadow;
 }
-#page-laaban, #page-tasks, #page-ehin, #page-comparison {
+
+#page-laaban, #page-tasks, #page-ehin, #page-comparison, #page-laaban-gallery, #page-ehin-gallery, #page-comparison-poetry {
   overflow-y: auto;
 }
+
 // Pages
+
+#page-comparison-poetry {
+  background-color: $comparison-poetry-bg;
+}
+
 #page-comparison {
   background-color: $comparison-bg;
 }
+
 #page-laaban {
   background-color: $laaban-bg;
 }
@@ -218,6 +294,15 @@ pre {
 #page-ehin {
   background-color: $ehin-bg;
 }
+
+#page-laaban-gallery {
+  background-color: $laaban-gallery-bg;
+}
+
+#page-ehin-gallery {
+  background-color: $ehin-gallery-bg;
+}
+
 .pt-page, #pt-main {
   background-color: black;
 }
@@ -225,7 +310,7 @@ pre {
 .btn-back {
   font-size: 20pt;
   font-weight: bold;
-  color: #fff;
+  color: #ffffff;
   opacity: 0.7;
   &:hover {
     cursor: pointer;

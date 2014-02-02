@@ -21,8 +21,19 @@ var endNext = false;
 var animating = false;
 
 var lastPage = null;
+var animStack = [];
 var backAnim = "";
 var animSupport = Modernizr.cssanimations;
+
+var pages = [
+    [ANIM_FROM_LEFT, "ehin"],
+    [ANIM_FROM_RIGHT, "laaban"],
+    [ANIM_FROM_BOTTOM, "tasks"],
+    [ANIM_FROM_TOP, "comparison"],
+    [ANIM_FROM_TOP, "comparison-poetry"],
+    [ANIM_FROM_LEFT, "ehin-gallery"],
+    [ANIM_FROM_RIGHT, "laaban-gallery"]
+];
 
 function reset(cur, next) {
     cur.removeClass("pt-page-current");
@@ -38,7 +49,7 @@ function onAnimEnd(cur, next) {
  * @param animation The animation
  * @param next The jQuery object of the next page
  */
-function changePage(animation, next) {
+function changePage(animation, next, state) {
     var cur = $(".pt-page-current").eq(0);
     var curAnim = "";
     var nextAnim = "";
@@ -63,6 +74,7 @@ function changePage(animation, next) {
     }
     next.addClass("pt-page-current");
     lastPage = cur;
+    animStack.push({page: cur, anim: backAnim, state: state});
     cur.addClass(curAnim).on(animEndEventName, function () {
         cur.off(animEndEventName);
         cur.removeClass(curAnim);
@@ -85,27 +97,50 @@ function changePage(animation, next) {
         onAnimEnd(cur, next);
     }
 }
+window.onbeforeunload = function () {
+    console.log("unload");
+}
+function isValidState(state) {
+    for (var i = 0; i < pages.length; i++) {
+        var p = pages[i];
+        if(p[1] == state) return true;
+    }
+    return state == "main";
+}
+var disableHash = false;
+function popState() {
+    if (lastState == null) return;
+    var last = animStack.pop();
+    if (last == null) return;
+    changePage(last.anim, last.page, last.state); //Going back
+    if(!isValidState(last.state)) last.state = "main";
+    disableHash = true;
+    History.setHash(last.state);
+}
 var lastState = null;
 function checkState() {
     var state = History.getHash();
     if (state == lastState) return;
-    switch (state) {
-        case STATE_LEFT: //We are going to the left page
-            changePage(ANIM_FROM_LEFT, $("#page-ehin"));
-            break;
-        case STATE_RIGHT: //We are going to the right page
-            changePage(ANIM_FROM_RIGHT, $("#page-laaban"));
-            break;
-        case STATE_BOT: //We are going to the bottom page
-            changePage(ANIM_FROM_BOTTOM, $("#page-tasks"));
-            break;
-        case STATE_TOP:
-            changePage(ANIM_FROM_TOP, $("#page-comparison"));
-            break;
-        default:
-            if (lastState == null) return; //We just opened the page, no need to change to the main page
-            changePage(backAnim, $("#page-main")); //Going back to the main page
-            break;
+    if(disableHash) {
+        disableHash = false;
+        return;
+    }
+    var changed = false;
+    if (animStack.length > 1 && (state == "back" || animStack.slice(-1)[0].state == state)) {
+        popState();
+    } else {
+        for (var i = 0; i < pages.length; i++) {
+            var p = pages[i];
+            if (p[1] == state) {
+                changePage(p[0], $("#page-" + p[1]), lastState);
+                changed = true;
+                History.setHash(p[1]);
+                break;
+            }
+        }
+        if (!changed) {
+            popState();
+        }
     }
     lastState = state;
 }
@@ -122,8 +157,7 @@ function loadRandomQuote() {
     var r = randomInt(0, 1);
     var author = "";
     var quote = "";
-    console.log(availableQuotes);
-    if(availableQuotes.laaban.length == 0 && availableQuotes.ehin.length == 0) {
+    if (availableQuotes.laaban.length == 0 && availableQuotes.ehin.length == 0) {
         availableQuotes.laaban = quotes.laaban.slice(0);
         availableQuotes.ehin = quotes.ehin.slice(0);
     }
@@ -146,17 +180,16 @@ $(".quote-generator-container").click(function () {
 var poemLeft = "";
 var poemRight = "";
 var availableQuotes = [];
-function loadRandomPoems() {
-    var r = randomInt(0, 3);
+function loadRandomPoems(sectionId) {
     var left = "";
     var right = "";
     var questions = [];
-    if (r == 0) { //Get a premade pair
+    if (sectionId == 1) { //Get a premade pair
         var pre = poemData.premade.chooseRandom();
         right = poemList[0][pre.pair.laaban];
         left = poemList[1][pre.pair.ehin];
         questions = pre.questions;
-    } else { //Get a random pair
+    } else if(sectionId == 2) { //Get a random pair
         right = poemList[0].chooseRandom();
         left = poemList[1].chooseRandom();
         var available = poemData.questions.slice(0);
@@ -167,15 +200,15 @@ function loadRandomPoems() {
         }
     }
     $.get(left, function (data) {
-        $("#poem-left").find(".poem-content").html(data);
+        $("#poem-left-" + sectionId).find(".poem-content").html(data);
         poemLeft = data;
     }, "text");
 
     $.get(right, function (data) {
-        $("#poem-right").find(".poem-content").html(data);
+        $("#poem-right-" + sectionId).find(".poem-content").html(data);
         poemRight = data;
     }, "text");
-    var cont = $(".poem-question-container");
+    var cont = $("#poem-q-container-" + sectionId);
     cont.text(""); //Clear previous questions
     var c = 0;
     for (var id in questions) {
@@ -206,10 +239,6 @@ var poemList = [
     []
 ];
 $(function () {
-    checkState();
-    window.setInterval(function () {
-        checkState();
-    }, 100);
     $.get("data/poems.yml", function (data) {
         poemData = jsyaml.load(data);
         var i;
@@ -219,7 +248,8 @@ $(function () {
         for (i = 1; i <= poemData.poems.ehin; i++) {
             poemList[1].push("data/poems/ehin/" + i + ".txt");
         }
-        loadRandomPoems();
+        loadRandomPoems(1);
+        loadRandomPoems(2);
     }, "text");
     $.get("data/quotes.yml", function (data) {
         quotes = jsyaml.load(data);
@@ -227,4 +257,18 @@ $(function () {
         availableQuotes.ehin = quotes.ehin.slice(0);
         loadRandomQuote();
     });
+    // MAKE SURE YOUR SELECTOR MATCHES SOMETHING IN YOUR HTML!!!
+    $('.tooltip').each(function() {
+        $(this).qtip({
+            content: {
+                text: $(this).next('.text')
+            },
+            style: {
+                classes: 'qtip-dark'
+            }
+        });
+    });
+    window.setInterval(function () {
+        checkState();
+    }, 100);
 });
