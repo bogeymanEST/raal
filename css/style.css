@@ -216,6 +216,10 @@ pre {
 
 .pt-page, #pt-main {
   background-color: black; }
+  
+#page-comparison a{
+  color: #ffbfa2;
+}
 
 .btn-back {
   font-size: 20pt;
