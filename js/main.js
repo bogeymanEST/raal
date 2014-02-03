@@ -29,6 +29,7 @@ var pages = [
     [ANIM_FROM_LEFT, "ehin"],
     [ANIM_FROM_RIGHT, "laaban"],
     [ANIM_FROM_BOTTOM, "tasks"],
+    [ANIM_FROM_BOTTOM, "tasks-text"],
     [ANIM_FROM_TOP, "comparison"],
     [ANIM_FROM_TOP, "comparison-poetry"],
     [ANIM_FROM_LEFT, "ehin-gallery"],
@@ -97,9 +98,6 @@ function changePage(animation, next, state) {
         onAnimEnd(cur, next);
     }
 }
-window.onbeforeunload = function () {
-    console.log("unload");
-}
 function isValidState(state) {
     for (var i = 0; i < pages.length; i++) {
         var p = pages[i];
@@ -134,6 +132,7 @@ function checkState() {
             if (p[1] == state) {
                 changePage(p[0], $("#page-" + p[1]), lastState);
                 changed = true;
+                if(state == "tasks-text") loadTasksText();
                 History.setHash(p[1]);
                 break;
             }
@@ -177,9 +176,10 @@ function loadRandomQuote() {
 $(".quote-generator-container").click(function () {
     loadRandomQuote();
 });
-var poemLeft = "";
-var poemRight = "";
+var poemLeft = [];
+var poemRight = [];
 var availableQuotes = [];
+var c = 0;
 function loadRandomPoems(sectionId) {
     var left = "";
     var right = "";
@@ -201,43 +201,45 @@ function loadRandomPoems(sectionId) {
     }
     $.get(left, function (data) {
         $("#poem-left-" + sectionId).find(".poem-content").html(data);
-        poemLeft = data;
+        poemLeft[sectionId] = data;
     }, "text");
 
     $.get(right, function (data) {
         $("#poem-right-" + sectionId).find(".poem-content").html(data);
-        poemRight = data;
+        poemRight[sectionId] = data;
     }, "text");
     var cont = $("#poem-q-container-" + sectionId);
     cont.text(""); //Clear previous questions
-    var c = 0;
     for (var id in questions) {
         if (!questions.hasOwnProperty(id)) continue;
         var q = questions[id];
         cont.append("<div class=\"poem-question\" id=\"poem-question-" + c + "\">" + q + "<br/>" +
-            "<textarea rows=\"4\"  class=\"poem-answer\" data-poem-question=\"" + c + "\"/></div>");
+            "<textarea id=\"poem-answer-" + c + "\" rows=\"4\"  class=\"poem-answer\" data-poem-question=\"" + c + "\"/></div>");
         c++;
     }
+    loadTasksText();
 }
-$("#poem-send-button").click(function () {
-    var email = $("#poem-send-email").val();
-    var subject = encodeURIComponent("Kahe luuletuse võrdlus");
-    var body = "Esimene luuletus:\n" + poemLeft + "Teine luuletus:\n" + poemRight + "\nKüsimused:\n";
-    $('[data-poem-question!=""]').each(function () {
-        var num = $(this).data("poem-question");
-        var question = $("#poem-question-" + num).text();
-        var answer = $(this).val();
-        body += question + "\n" + answer + "\n";
-    });
-    body = encodeURIComponent(body);
-    window.open("mailto:" + email + "?subject=" + subject + "&body=" + body);
-});
 var quotes = [];
 var poemData = {};
 var poemList = [
     [],
     []
 ];
+function loadTasksText() {
+    var body = "ESIMENE ÜLESANNE\n\nESIMENE LUULETUS(Ehin):\n" + poemLeft[1] + "\n\nTEINE LUULETUS(Laaban):\n" + poemRight[1] + "\n\nKÜSIMUSED:\n";
+    for(var i = 0; i < 3; i++) {
+        var question = $("#poem-question-" + i).text();
+        var answer = $("#poem-answer-" + i).val();
+        body += (i+1) + ")" + question + "\n" + answer + "\n";
+    }
+    body += "\n\nTEINE ÜLESANNE\n\nESIMENE LUULETUS(Ehin):\n" + poemLeft[2] + "\n\nTEINE LUULETUS(Laaban):\n" + poemRight[2] + "\n\nKÜSIMUSED:\n";
+    for(i = 3; i < 6; i++) {
+        question = $("#poem-question-" + i).text();
+        answer = $("#poem-answer-" + i).val();
+        body += (i-2) + ")" + question + "\n" + answer + "\n";
+    }
+    $("#tasks-text").val(body);
+}
 $(function () {
     $.get("data/poems.yml", function (data) {
         poemData = jsyaml.load(data);

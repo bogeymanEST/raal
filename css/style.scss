@@ -269,12 +269,18 @@ pre {
   @include inset-shadow;
 }
 
-#page-laaban, #page-tasks, #page-ehin, #page-comparison, #page-laaban-gallery, #page-ehin-gallery, #page-comparison-poetry {
+#page-laaban, #page-tasks, #page-ehin, #page-comparison, #page-laaban-gallery, #page-ehin-gallery, #page-comparison-poetry, #page-tasks-text {
   overflow-y: auto;
 }
 
-// Pages
+#tasks-text {
+  height: 100%;
+}
 
+// Pages
+#page-tasks-text {
+  background-color: darken($tasks-bg, 5%);
+}
 #page-comparison-poetry {
   background-color: $comparison-poetry-bg;
 }

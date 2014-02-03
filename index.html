@@ -183,7 +183,9 @@ kõnnib
     <div id="page-tasks" class="pt-page">
         <div class="tasks-container">
             <div class="tasks-content">
-                <div class="tasks-header"><a class="btn-back pull-left" href="#back"> Tagasi</a>Lahenda ülesanded</div>
+                <div class="tasks-header"><a class="btn-back pull-left" href="#back">Tagasi</a>Lahenda ülesanded</div>
+                <div class="info-section">Esimene ülesanne</div>
+                Lehekülje autorid on pannud kokku luuletuste paarid ning nendega kohta käivad luuletused.<br/>Ole ettevaatlik, sest iga kord, kui sa lehe avad, muutuvad paarid ning kustuvad vastuste tekstid.<br/><br/>
                 <div id="poem-left-1">
                     <div class="poem-header">Andres Ehin</div>
                     <pre class="poem-content">
@@ -200,6 +202,8 @@ kõnnib
                 <div id="poem-q-container-1" class="poem-question-container">
                 </div>
                 <div class="poem-task-spacer"></div>
+                <div class="info-section">Teine ülesanne</div>
+                Siin pannakse kokku kaks täiesti suvalist luuletust ning kolm suvalist küsimust.<br/>Ole ettevaatlik, sest paarid ja küsimused muutuvad iga kord kui lehe avad!<br/><br/>
                 <div id="poem-left-2">
                     <div class="poem-header">Andres Ehin</div>
                     <pre class="poem-content">
@@ -220,7 +224,16 @@ kõnnib
                     E-posti aadress<input type="text" id="poem-send-email"/><br/>
                     <input type="button" id="poem-send-button" value="Saada"/>
                 </div>-->
-
+                <a class="btn-back" href="#tasks-text" id="btn-tasks-text">Kopeeritav tekst</a>
+            </div>
+        </div>
+    </div>
+    <div id="page-tasks-text" class="pt-page">
+        <div class="tasks-container">
+            <div class="tasks-header"><a class="btn-back pull-left" href="#back">Tagasi</a>Kopeeritav ülesannete tekst</div>
+            <div class="tasks-content">
+                Kopeeri tekst siit ning saada oma õpetajale.
+                <textarea rows="40" id="tasks-text"></textarea>
             </div>
         </div>
     </div>

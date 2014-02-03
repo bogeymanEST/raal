@@ -190,8 +190,14 @@ pre {
   background-color: rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); }
 
-#page-laaban, #page-tasks, #page-ehin, #page-comparison, #page-laaban-gallery, #page-ehin-gallery, #page-comparison-poetry {
+#page-laaban, #page-tasks, #page-ehin, #page-comparison, #page-laaban-gallery, #page-ehin-gallery, #page-comparison-poetry, #page-tasks-text {
   overflow-y: auto; }
+
+#tasks-text {
+  height: 100%; }
+
+#page-tasks-text {
+  background-color: #4e8c5a; }
 
 #page-comparison-poetry {
   background-color: #458e93; }
@@ -216,10 +222,9 @@ pre {
 
 .pt-page, #pt-main {
   background-color: black; }
-  
+
 #page-comparison a:not(.btn-back) {
-  color: #ffbfa2;
-}
+  color: #ffbfa2; }
 
 .btn-back {
   font-size: 20pt;
