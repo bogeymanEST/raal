@@ -23,7 +23,7 @@ premade:
     questions:
       - Võrdle neid luuletusi.
       - Kuidas mõjub lugejale sõnakordus Ehini luuletuses?
-      - Vali Laabani luuletusest üks asi, milleks ta end kutsub, ning selgita mida see võiks tähendada.
+      - Vali Laabani luuletusest üks asi, milleks ta end kutsub, ning selgita selle tähendust.
   - pair:
       laaban: 10
       ehin: 9
