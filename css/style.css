@@ -217,7 +217,7 @@ pre {
 .pt-page, #pt-main {
   background-color: black; }
   
-#page-comparison a{
+#page-comparison a:not(.btn-back) {
   color: #ffbfa2;
 }
 
